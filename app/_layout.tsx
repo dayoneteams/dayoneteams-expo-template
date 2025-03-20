@@ -1,9 +1,10 @@
-import { Stack } from "expo-router";
-import "../libs/common/translation";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@/libs/common/ultis";
-import FlashMessage from "react-native-flash-message";
-import { ThemeProvider } from "@/libs/common/design-system/theme";
+import { QueryClientProvider } from "@tanstack/react-query"
+import { Stack } from "expo-router"
+import "../libs/common/translation"
+import FlashMessage from "react-native-flash-message"
+
+import { ThemeProvider } from "@/libs/common/design-system/theme"
+import { queryClient } from "@/libs/common/ultis"
 
 export default function RootLayout() {
   return (
@@ -15,5 +16,5 @@ export default function RootLayout() {
         <FlashMessage position="top" />
       </ThemeProvider>
     </QueryClientProvider>
-  );
+  )
 }

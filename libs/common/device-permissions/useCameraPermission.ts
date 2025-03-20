@@ -1,25 +1,26 @@
-import { useState, useEffect } from "react";
-import { Alert } from "react-native";
-import { Camera } from "expo-camera";
+import { useState, useEffect } from "react"
+
+import { Camera } from "expo-camera"
+import { Alert } from "react-native"
 
 export const useCameraPermission = () => {
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [hasPermission, setHasPermission] = useState<boolean | null>(null)
 
   useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
+    ;(async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync()
       if (status === "granted") {
-        setHasPermission(true);
+        setHasPermission(true)
       } else {
-        setHasPermission(false);
+        setHasPermission(false)
         Alert.alert(
           "Quyền truy cập Camera bị từ chối",
           "Vui lòng vào Cài đặt và cấp quyền Camera cho ứng dụng.",
-          [{ text: "OK" }]
-        );
+          [{ text: "OK" }],
+        )
       }
-    })();
-  }, []);
+    })()
+  }, [])
 
-  return hasPermission;
-};
+  return hasPermission
+}

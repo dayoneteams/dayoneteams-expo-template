@@ -82,4 +82,4 @@ export const colors = {
   defaultBadge: "#2C2C2C",
   yellowBackground: "#FBBF24",
   cardBackground: "rgba(37,35,42,1)",
-};
+}

@@ -1,13 +1,13 @@
-import { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios"
 
-import { LoginPayload } from "../types";
-import { axiosClient } from "@/libs/data-access";
+import { LoginPayload } from "../types"
+import { axiosClient } from "@/libs/data-access"
 
 const login = async (payload: LoginPayload, config?: AxiosRequestConfig) => {
-  const url = `/login?email=${payload.email}&password=${payload.password}`;
-  return await axiosClient.post<any>(url, config);
-};
+  const url = `/login?email=${payload.email}&password=${payload.password}`
+  return await axiosClient.post<any>(url, config)
+}
 
 export const authAPI = {
   login,
-};
+}

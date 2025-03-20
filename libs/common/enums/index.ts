@@ -1,2 +1,2 @@
-export * from "./sports";
-export * from "./languages";
+export * from "./sports"
+export * from "./languages"

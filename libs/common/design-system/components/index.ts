@@ -1,2 +1,2 @@
-export * from "./TextInput";
-export * from "./SwitchLanguage";
+export * from "./TextInput"
+export * from "./SwitchLanguage"

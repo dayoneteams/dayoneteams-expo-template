@@ -1,32 +1,32 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import { useFormik } from "formik";
-import { useTranslation } from "react-i18next";
+import { useFormik } from "formik"
+import { useTranslation } from "react-i18next"
 import {
   Keyboard,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
-} from "react-native";
-import { Button, TextInput as RNTextInput } from "react-native-paper";
-import * as Yup from "yup";
+} from "react-native"
+import { Button, TextInput as RNTextInput } from "react-native-paper"
+import * as Yup from "yup"
 
-import { LoginPayload } from "../types";
-import { successHandling } from "@/libs/common/ultis";
-import { TextInput } from "@/libs/common/design-system/components";
+import { LoginPayload } from "../types"
+import { TextInput } from "@/libs/common/design-system/components"
+import { successHandling } from "@/libs/common/ultis"
 
 export const LoginForm = () => {
-  const { t } = useTranslation("auth");
+  const { t } = useTranslation("auth")
 
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const validationSchema = Yup.object<LoginPayload>({
     email: Yup.string()
       .email(t("auth.invalidEmail"))
       .required(t("auth.requiredEmail")),
     password: Yup.string().required(t("auth.requiredPassword")),
-  });
+  })
 
   const loginFormik = useFormik({
     initialValues: {
@@ -34,18 +34,18 @@ export const LoginForm = () => {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: values => {
       // handleLogin.cancel()
-      handleLogin(values);
+      handleLogin(values)
     },
-  });
+  })
   const handleLogin = async (values: LoginPayload) => {
-    setLoading(true);
-    Keyboard.dismiss();
-    console.log("~ values", values);
-    successHandling("Login successfully", "SignInForm");
-    setLoading(false);
-  };
+    setLoading(true)
+    Keyboard.dismiss()
+    console.log("~ values", values)
+    successHandling("Login successfully", "SignInForm")
+    setLoading(false)
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -83,14 +83,13 @@ export const LoginForm = () => {
           onPress={() => loginFormik.handleSubmit()}
           loading={loading}
           disabled={loading}
-          style={styles.button}
-        >
+          style={styles.button}>
           {t("auth.login")}
         </Button>
       </View>
     </TouchableWithoutFeedback>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -103,4 +102,4 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginBottom: 10,
   },
-});
+})

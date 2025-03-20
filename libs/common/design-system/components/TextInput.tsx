@@ -1,36 +1,34 @@
-import { FC } from "react";
+import { FC } from "react"
 
-import { StyleSheet, View, ViewStyle } from "react-native";
+import { StyleSheet, View, ViewStyle } from "react-native"
 import {
   HelperText,
   TextInput as RNTextInput,
   TextInputProps,
-} from "react-native-paper";
+} from "react-native-paper"
 
-import { colors } from "../colors";
+import { colors } from "../colors"
 
 type Props = {
-  containerStyle?: ViewStyle;
-  errorMsg?: string;
-} & TextInputProps;
+  containerStyle?: ViewStyle
+  errorMsg?: string
+} & TextInputProps
 
-export const TextInput: FC<Props> = (props) => {
+export const TextInput: FC<Props> = props => {
   return (
     <View style={styles.inputContainer}>
       <RNTextInput
         placeholderTextColor={colors.placeholderTextColor}
         {...props}
         style={[styles.input, props.style]}
-        // eslint-disable-next-line react-native/no-inline-styles
         contentStyle={[{ paddingLeft: 10 }, props.contentStyle]}
-        // eslint-disable-next-line react-native/no-inline-styles
         outlineStyle={[{ borderRadius: 10 }, props.outlineStyle]}
         mode="outlined"
       />
       {props.error && <HelperText type="error">{props.errorMsg}</HelperText>}
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -41,4 +39,4 @@ const styles = StyleSheet.create({
     width: "100%",
     minHeight: 40,
   },
-});
+})

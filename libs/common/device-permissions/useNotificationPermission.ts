@@ -1,25 +1,26 @@
-import { useState, useEffect } from "react";
-import * as Notifications from "expo-notifications";
-import { Alert } from "react-native";
+import { useState, useEffect } from "react"
+
+import * as Notifications from "expo-notifications"
+import { Alert } from "react-native"
 
 export const useNotificationPermission = () => {
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [hasPermission, setHasPermission] = useState<boolean | null>(null)
 
   useEffect(() => {
-    (async () => {
-      const { status } = await Notifications.requestPermissionsAsync();
+    ;(async () => {
+      const { status } = await Notifications.requestPermissionsAsync()
       if (status === "granted") {
-        setHasPermission(true);
+        setHasPermission(true)
       } else {
-        setHasPermission(false);
+        setHasPermission(false)
         Alert.alert(
           "Quyền gửi thông báo bị từ chối",
           "Vui lòng vào Cài đặt và cấp quyền thông báo cho ứng dụng.",
-          [{ text: "OK" }]
-        );
+          [{ text: "OK" }],
+        )
       }
-    })();
-  }, []);
+    })()
+  }, [])
 
-  return hasPermission;
-};
+  return hasPermission
+}

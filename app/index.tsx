@@ -1,23 +1,24 @@
-import { LoginForm } from "@/libs/auth/components";
-import { SwitchLanguage } from "@/libs/common/design-system/components";
-import { useAppStore } from "@/libs/common/store";
-import { errorHandling, successHandling } from "@/libs/common/ultis";
-import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
-import { Button } from "react-native-paper";
+import { useTranslation } from "react-i18next"
+import { StyleSheet, Text, View } from "react-native"
+import { Button } from "react-native-paper"
+
+import { LoginForm } from "@/libs/auth/components"
+import { SwitchLanguage } from "@/libs/common/design-system/components"
+import { useAppStore } from "@/libs/common/store"
+import { errorHandling, successHandling } from "@/libs/common/ultis"
 
 export default function Index() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("common")
 
-  const { count, increase, decrease, reset } = useAppStore();
+  const { count, increase, decrease, reset } = useAppStore()
 
   const handleSuccess = () => {
-    successHandling("Success", "RootLayout");
-  };
+    successHandling("Success", "RootLayout")
+  }
 
   const handleError = () => {
-    errorHandling("Error", "RootLayout");
-  };
+    errorHandling("Error", "RootLayout")
+  }
 
   return (
     <View style={styles.mainContainer}>
@@ -41,7 +42,7 @@ export default function Index() {
         {"Reset"}
       </Button>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -54,4 +55,4 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
   },
-});
+})
