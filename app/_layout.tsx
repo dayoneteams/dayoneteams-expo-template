@@ -1,5 +1,19 @@
 import { Stack } from "expo-router";
+import "../libs/common/translation";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/libs/common/ultis";
+import FlashMessage from "react-native-flash-message";
+import { ThemeProvider } from "@/libs/common/design-system/theme";
 
 export default function RootLayout() {
-  return <Stack />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+        </Stack>
+        <FlashMessage position="top" />
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
 }

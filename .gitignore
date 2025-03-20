@@ -37,4 +37,7 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# yarn
+.yarn/cache
+
 app-example
