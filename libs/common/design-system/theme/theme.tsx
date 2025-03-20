@@ -1,4 +1,5 @@
-import { useColorScheme } from "react-native"
+import React, { createContext, useContext, useState } from "react"
+
 import { MD3LightTheme, MD3DarkTheme, PaperProvider } from "react-native-paper"
 
 const lightTheme = {
@@ -21,12 +22,24 @@ const darkTheme = {
   },
 }
 
-export const useAppTheme = () => {
-  const scheme = useColorScheme()
-  return scheme === "dark" ? darkTheme : lightTheme
-}
+// 🟢 Tạo Context để lưu trạng thái theme
+const ThemeContext = createContext({
+  isDarkMode: false,
+  toggleTheme: () => {},
+})
+
+export const useAppTheme = () => useContext(ThemeContext)
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const theme = useAppTheme()
-  return <PaperProvider theme={theme}>{children}</PaperProvider>
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  const toggleTheme = () => setIsDarkMode(prev => !prev)
+
+  const theme = isDarkMode ? darkTheme : lightTheme
+
+  return (
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+      <PaperProvider theme={theme}>{children}</PaperProvider>
+    </ThemeContext.Provider>
+  )
 }

@@ -4,6 +4,7 @@ import { Button } from "react-native-paper"
 
 import { LoginForm } from "@/libs/auth/components"
 import { SwitchLanguage } from "@/libs/common/design-system/components"
+import { useAppTheme } from "@/libs/common/design-system/theme"
 import { useAppStore } from "@/libs/common/store"
 import { errorHandling, successHandling } from "@/libs/common/ultis"
 
@@ -11,6 +12,8 @@ export default function Index() {
   const { t } = useTranslation("common")
 
   const { count, increase, decrease, reset } = useAppStore()
+
+  const { toggleTheme } = useAppTheme()
 
   const handleSuccess = () => {
     successHandling("Success", "RootLayout")
@@ -40,6 +43,9 @@ export default function Index() {
       </Button>
       <Button mode="contained" onPress={reset}>
         {"Reset"}
+      </Button>
+      <Button mode="contained" onPress={toggleTheme}>
+        {"Toggle Theme"}
       </Button>
     </View>
   )
