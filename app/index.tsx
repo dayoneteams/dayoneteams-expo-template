@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next"
-import { StyleSheet, Text, View } from "react-native"
-import { Button } from "react-native-paper"
+import { StyleSheet, View } from "react-native"
+import { Button, Text } from "react-native-paper"
 
 import { LoginForm } from "@/libs/auth/components"
 import { SwitchLanguage } from "@/libs/common/design-system/components"
@@ -13,7 +13,7 @@ export default function Index() {
 
   const { count, increase, decrease, reset } = useAppStore()
 
-  const { toggleTheme } = useAppTheme()
+  const { toggleTheme, theme } = useAppTheme()
 
   const handleSuccess = () => {
     successHandling("Success", "RootLayout")
@@ -24,7 +24,11 @@ export default function Index() {
   }
 
   return (
-    <View style={styles.mainContainer}>
+    <View
+      style={[
+        styles.mainContainer,
+        { backgroundColor: theme.colors.background },
+      ]}>
       <Text>{t("appName.full")}</Text>
       <SwitchLanguage />
       <LoginForm />
