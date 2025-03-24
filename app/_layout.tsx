@@ -1,10 +1,10 @@
 import { QueryClientProvider } from "@tanstack/react-query"
 import { Stack } from "expo-router"
-import "../libs/common/translation"
+import "../libs/common/utils/i18n"
 import FlashMessage from "react-native-flash-message"
 
 import { ThemeProvider } from "@/libs/common/design-system/theme"
-import { queryClient } from "@/libs/common/ultis"
+import { queryClient } from "@/libs/common/utils/network"
 
 export default function RootLayout() {
   return (

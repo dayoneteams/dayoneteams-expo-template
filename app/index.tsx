@@ -6,7 +6,10 @@ import { LoginForm } from "@/libs/auth/components"
 import { SwitchLanguage } from "@/libs/common/design-system/components"
 import { useAppTheme } from "@/libs/common/design-system/theme"
 import { useAppStore } from "@/libs/common/store"
-import { errorHandling, successHandling } from "@/libs/common/ultis"
+import {
+  errorHandling,
+  successHandling,
+} from "@/libs/common/utils/notification"
 
 export default function Index() {
   const { t } = useTranslation("common")

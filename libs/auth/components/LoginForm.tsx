@@ -13,7 +13,7 @@ import * as Yup from "yup"
 
 import { LoginPayload } from "../types"
 import { TextInput } from "@/libs/common/design-system/components"
-import { successHandling } from "@/libs/common/ultis"
+import { successHandling } from "@/libs/common/utils/notification"
 
 export const LoginForm = () => {
   const { t } = useTranslation("auth")
