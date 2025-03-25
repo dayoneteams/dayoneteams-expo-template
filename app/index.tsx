@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Button, Text } from "react-native-paper"
@@ -14,6 +15,8 @@ import {
 export default function Index() {
   const { t } = useTranslation("common")
 
+  const router = useRouter()
+
   const { count, increase, decrease, reset } = useAppStore()
 
   const { toggleTheme, theme } = useAppTheme()
@@ -24,6 +27,10 @@ export default function Index() {
 
   const handleError = () => {
     errorHandling("Error", "RootLayout")
+  }
+
+  const handleNotfound = () => {
+    router.push("/not-found")
   }
 
   return (
@@ -53,6 +60,9 @@ export default function Index() {
       </Button>
       <Button mode="contained" onPress={toggleTheme}>
         {"Toggle Theme"}
+      </Button>
+      <Button mode="contained" onPress={handleNotfound}>
+        {"Not Found"}
       </Button>
     </View>
   )

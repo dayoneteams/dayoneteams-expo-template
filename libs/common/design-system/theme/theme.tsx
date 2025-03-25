@@ -3,13 +3,15 @@ import React, { createContext, useContext, useState } from "react"
 import { StatusBar } from "expo-status-bar"
 import { MD3LightTheme, MD3DarkTheme, PaperProvider } from "react-native-paper"
 
+import { colors } from "../colors"
+
 const lightTheme = {
   ...MD3LightTheme,
   colors: {
     ...MD3LightTheme.colors,
     primary: "#6200ee",
-    background: "#ffffff", // Light Mode Background
-    text: "#000000",
+    background: colors.lightModeBackground, // Light Mode Background
+    text: colors.dark,
   },
 }
 
@@ -18,8 +20,8 @@ const darkTheme = {
   colors: {
     ...MD3DarkTheme.colors,
     primary: "#bb86fc",
-    background: "#121212", // Dark Mode Background
-    text: "#ffffff",
+    background: colors.darkModeBackground, // Dark Mode Background
+    text: colors.white,
   },
 }
 

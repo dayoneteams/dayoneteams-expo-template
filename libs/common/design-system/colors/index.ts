@@ -56,6 +56,8 @@ export const colors = {
   transparent: "transparent",
   grey: "#262626",
   darkGrey: "#171717",
+  lightModeBackground: "#F5F5F5",
+  darkModeBackground: "#121212",
   textGrey: "#A9A9A9",
   navbarGradient: ["#161D2A", "#0A0E14"],
   dialogBackground: "#313c4c",
