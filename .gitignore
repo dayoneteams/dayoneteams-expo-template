@@ -41,3 +41,4 @@ yarn-error.*
 .yarn/cache
 
 app-example
+assets

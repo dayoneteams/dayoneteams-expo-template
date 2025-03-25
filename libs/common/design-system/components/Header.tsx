@@ -3,24 +3,20 @@ import { StyleSheet } from "react-native"
 import { Appbar } from "react-native-paper"
 
 type HeaderProps = {
+  title: string
   mode?: "small" | "medium" | "large" | "center-aligned"
-  back?: { title?: string; href?: string }
 }
 
-export const Header = ({ mode = "small", back }: HeaderProps) => {
+export const Header = ({ title, mode = "small" }: HeaderProps) => {
   const navigation = useNavigation()
 
-  const title = navigation.getState()?.routes.at(-1)?.name ?? "Mặc định"
-
   const _goBack = () => {
-    if (navigation.canGoBack()) {
-      navigation.goBack()
-    }
+    navigation.goBack()
   }
 
   return (
     <Appbar.Header mode={mode}>
-      {back && <Appbar.BackAction onPress={_goBack} />}
+      {navigation.canGoBack() && <Appbar.BackAction onPress={_goBack} />}
       <Appbar.Content title={title} titleStyle={styles.title} />
     </Appbar.Header>
   )
