@@ -32,7 +32,7 @@ const ThemeContext = createContext({
   theme: lightTheme,
 })
 
-export const useAppTheme = () => useContext(ThemeContext)
+export const useThemeContext = () => useContext(ThemeContext)
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(false)

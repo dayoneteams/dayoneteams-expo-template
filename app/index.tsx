@@ -1,11 +1,14 @@
 import { useRouter } from "expo-router"
 import { useTranslation } from "react-i18next"
-import { StyleSheet, View } from "react-native"
+import { StyleSheet } from "react-native"
 import { Button, Text } from "react-native-paper"
 
 import { LoginForm } from "@/libs/auth/components"
-import { SwitchLanguage } from "@/libs/common/design-system/components"
-import { useAppTheme } from "@/libs/common/design-system/theme"
+import {
+  ScreenWrapper,
+  SwitchLanguage,
+} from "@/libs/common/design-system/components"
+import { useThemeContext } from "@/libs/common/design-system/theme"
 import { useAppStore } from "@/libs/common/store"
 import {
   errorHandling,
@@ -19,7 +22,7 @@ export default function Index() {
 
   const { count, increase, decrease, reset } = useAppStore()
 
-  const { toggleTheme, theme } = useAppTheme()
+  const { toggleTheme, theme } = useThemeContext()
 
   const handleSuccess = () => {
     successHandling("Success", "RootLayout")
@@ -34,11 +37,7 @@ export default function Index() {
   }
 
   return (
-    <View
-      style={[
-        styles.mainContainer,
-        { backgroundColor: theme.colors.background },
-      ]}>
+    <ScreenWrapper contentContainerStyle={styles.mainContainer}>
       <Text>{t("appName.full")}</Text>
       <SwitchLanguage />
       <LoginForm />
@@ -48,7 +47,7 @@ export default function Index() {
       <Button mode="contained" onPress={handleError}>
         {"Error"}
       </Button>
-      <Text style={styles.text}>Count: {count}</Text>
+      <Text variant="titleLarge">Count: {count}</Text>
       <Button mode="contained" onPress={increase}>
         {"Increase"}
       </Button>
@@ -64,18 +63,14 @@ export default function Index() {
       <Button mode="contained" onPress={handleNotfound}>
         {"Not Found"}
       </Button>
-    </View>
+    </ScreenWrapper>
   )
 }
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     gap: 10,
-  },
-  text: {
-    fontSize: 30,
   },
 })
